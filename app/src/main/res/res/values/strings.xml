@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">FlagsQuiz</string>
+    <string name="best_score_recorded">BEST SCORE RECORDED</string>
+    <string name="answer_a">Answer A</string>
+    <string name="answer_b">Answer B</string>
+    <string name="answer_c">Answer C</string>
+    <string name="answer_d">Answer D</string>
+    <string name="easy">EASY</string>
+    <string name="play">PLAY</string>
+    <string name="score">SCORE</string>
+    <string name="select_mode">Select Mode</string>
+    <string name="score_0">Score : 0</string>
+    <string name="passed_0_30">Passed : 0/30</string>
+    <string name="try_again">TRY AGAIN</string>
+
+    <string name="Share">Share</string>
+    <string name="RateApp">RateApp</string>
+    <string name="MoreApps">MoreApps</string>
+
+    <string name="SCORE">SCORE</string>
+    <string name="TOTAL">TOTAL</string>
+    <string name="Correct">Correct</string>
+    <string name="InCorrect">InCorrect</string>
+    <string name="Share_App">Share the App</string>
+    <string name="CORRECT">CORRECT</string>
+    <string name="todo1">image</string>
+    <string name="settings">setting</string>
+    <string name="totalquestion">1/222</string>
+
+
+</resources>

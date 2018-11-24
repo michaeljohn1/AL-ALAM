@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"اختبار الأعلام "</string>
+    <string name="best_score_recorded">أفضل نقاط مسجل</string>
+    <string name="answer_a">"الاختيار ألأول "</string>
+    <string name="answer_b">الاختيار الثاني</string>
+    <string name="answer_c">الاختيار الثالث</string>
+    <string name="answer_d">الاختيار الرابع</string>
+    <string name="easy">سهل</string>
+    <string name="play">تشغيل</string>
+    <string name="score">النقاط</string>
+    <string name="select_mode">تحديد المستوى</string>
+    <string name="score_0">النقاط</string>
+    <string name="passed_0_30">الاجابات الصحيحة</string>
+    <string name="try_again">حاول مرة اخرى</string>
+    <string name="Share">نشر</string>
+    <string name="RateApp">قيم التطبيق</string>
+    <string name="MoreApps">مزيد من التطبيقات</string>
+    <string name="SCORE">النقاط</string>
+    <string name="TOTAL">المجموع الكلي</string>
+    <string name="Share_App">ن</string>
+    <string name="Correct">الاجابة صحيحة</string>
+    <string name="InCorrect">الاجابة خاطئة</string>
+    <string name="CORRECT">صحيح</string>
+</resources>

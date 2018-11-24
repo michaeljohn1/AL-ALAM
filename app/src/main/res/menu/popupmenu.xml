@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Share"
+        android:title="مشاركة التطبيق"/>
+
+    <item
+        android:id="@+id/MoreApps"
+        android:title="مزيد من التطبيقات"/>
+
+    <item
+        android:id="@+id/RateApp"
+        android:title="قيم التطبيق"/>
+
+</menu>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2f2"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/flags"
+        android:layout_width="277dp"
+        android:layout_height="163dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/united_kingdom"
+        android:freezesText="true"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/textmode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flags"
+        android:layout_marginTop="15dp"
+        android:text="@string/select_mode"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <LinearLayout
+        android:layout_width="489dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flags"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/greengreen"
+            android:max="3"
+            android:thumb="@drawable/touch" />
+
+        <TextView
+            android:id="@+id/txtMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/easy"
+            android:textColor="@color/colorPrimaryDark" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="212dp"
+        android:layout_below="@+id/flags"
+        android:layout_marginTop="63dp"
+        android:gravity="center"
+        android:padding="20dp">
+        <Button
+            android:id="@+id/btnPlay"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#3fad14"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/play"
+            android:textColor="@color/white1"
+            android:layout_margin="3dp"
+            android:textStyle="bold"
+            android:theme="@style/MyButton" />
+
+        <Button
+            android:id="@+id/btnScore"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:background="#df11ce"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/score"
+            android:textColor="@color/white1"
+            android:layout_below="@id/btnPlay"
+            android:textStyle="bold"
+            android:theme="@style/MyButton" />
+
+        <Button
+            android:id="@+id/btn_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorAccent"
+            android:text="Settings"
+
+            android:layout_below="@id/btnScore"
+            android:textColor="@color/white1" />
+
+
+
+
+    </RelativeLayout>
+
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-2710241286669528/1584870299" />
+</RelativeLayout>
