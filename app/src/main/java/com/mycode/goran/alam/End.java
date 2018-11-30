@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import static com.google.firebase.analytics.FirebaseAnalytics.Param.SCORE;
+
 public class End extends AppCompatActivity {
 
     Button btnTryAgain;
@@ -38,7 +40,7 @@ public class End extends AppCompatActivity {
 
         Bundle extra = getIntent().getExtras();
         if (extra != null) {
-            int score = extra.getInt(getString(R.string.SCORE));
+            int score = extra.getInt(SCORE);
             int totalQuestion = extra.getInt(getString(R.string.TOTAL));
             int correctAnswer = extra.getInt(getString(R.string.CORRECT));
 
@@ -79,6 +81,7 @@ public class End extends AppCompatActivity {
 
             progressBarResult.setMax(totalQuestion);
             progressBarResult.setProgress(correctAnswer);
+
 
             //save score
             db.insertScore(finalScore);

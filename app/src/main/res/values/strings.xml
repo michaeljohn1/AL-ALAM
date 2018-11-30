@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">" الأعلام "</string>
-    <string name="best_score_recorded">أفضل نقاط مسجل</string>
-    <string name="answer_a">"الاختيار ألأول "</string>
-    <string name="answer_b">الاختيار الثاني</string>
-    <string name="answer_c">الاختيار الثالث</string>
-    <string name="answer_d">الاختيار الرابع</string>
-    <string name="easy">سهل</string>
-    <string name="play">تشغيل</string>
-    <string name="score">النقاط</string>
-    <string name="select_mode">تحديد المستوى</string>
-    <string name="score_0">النقاط</string>
-    <string name="passed_0_30">الاجابات الصحيحة</string>
-    <string name="try_again">حاول مرة اخرى</string>
-    <string name="Share">نشر</string>
-    <string name="RateApp">قيم التطبيق</string>
-    <string name="MoreApps">مزيد من التطبيقات</string>
-    <string name="SCORE">النقاط</string>
     <string name="TOTAL">المجموع الكلي</string>
     <string name="Share_App">ن</string>
     <string name="Correct">الاجابة صحيحة</string>
@@ -27,4 +10,15 @@
     <string name="totalquestion">ال</string>
     <string name="compare">مقارنة بالمحاولة السابقة</string>
     <string name="succesfulanswer">جاوبت بنجاح</string>
+    <string name="score_0">score</string>
+    <string name="try_again">try_again</string>
+    <string name="play">play</string>
+    <string name="score">score</string>
+    <string name="answer_b">answer_b</string>
+    <string name="select_mode">select_mode</string>
+    <string name="answer_a">answer_a</string>
+    <string name="answer_c">answer_c</string>
+    <string name="answer_d">answer_d</string>
+    <string name="passed_0_30">passed_0_30</string>
+    <string name="app_name">الاعلام</string>
 </resources>
