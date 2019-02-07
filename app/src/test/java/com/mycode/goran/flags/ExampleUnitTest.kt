@@ -1,4 +1,4 @@
-package com.mycode.goran.alam
+package com.mycode.goran.flags
 
 import org.junit.Test
 

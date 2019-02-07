@@ -1,4 +1,4 @@
-package com.mycode.goran.alam
+package com.mycode.goran.flags
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="TOTAL">المجموع الكلي</string>
-    <string name="Share_App">ن</string>
-    <string name="Correct">الاجابة صحيحة</string>
-    <string name="InCorrect">الاجابة خاطئة</string>
-    <string name="CORRECT">صحيح</string>
-    <string name="todo1">صورة</string>
-    <string name="settings">الضبط</string>
-    <string name="totalquestion">ال</string>
-    <string name="compare">مقارنة بالمحاولة السابقة</string>
-    <string name="succesfulanswer">جاوبت بنجاح</string>
-    <string name="score_0">score</string>
-    <string name="try_again">try_again</string>
-    <string name="play">play</string>
-    <string name="score">score</string>
-    <string name="answer_b">answer_b</string>
-    <string name="select_mode">select_mode</string>
-    <string name="answer_a">answer_a</string>
-    <string name="answer_c">answer_c</string>
-    <string name="answer_d">answer_d</string>
-    <string name="passed_0_30">passed_0_30</string>
-    <string name="app_name">الاعلام</string>
+    <string name="app_name">Flags Quiz</string>
+    <string name="banner_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="Interstatial_test">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="best_score_recorded">BEST SCORE RECORDED</string>
+    <string name="answer_a">Answer A</string>
+    <string name="answer_b">Answer B</string>
+    <string name="answer_c">Answer C</string>
+    <string name="answer_d">Answer D</string>
+    <string name="easy">EASY</string>
+    <string name="play">PLAY</string>
+    <string name="score">SCORE</string>
+    <string name="select_mode">Select Mode</string>
+    <string name="score_0">Score : 0</string>
+    <string name="passed_0_30">Passed : 0/30</string>
+    <string name="try_again">TRY AGAIN</string>
+
+    <string name="Share">Share The App</string>
+    <string name="RateApp">Rate The App</string>
+    <string name="MoreApps">More The Apps</string>
+
+    <string name="SCORE">SCORE</string>
+    <string name="TOTAL">TOTAL</string>
+    <string name="Correct">Correct</string>
+    <string name="InCorrect">InCorrect</string>
+    <string name="Share_App">Share the App</string>
+    <string name="CORRECT">CORRECT</string>
+    <string name="totalquestion">Total</string>
+    <string name="settings">Settings</string>
+    <string name="_1_222">1/222</string>
+    <string name="todo1">TODO</string>
+    <string name="PASSED">PASSED : %d/%d</string>
+    <string name="Wrong">Wrong</string>
+    <string name="correct">Correct :</string>
+    <string name="APP_ID">ca-app-pub-3940256099942544~3347511713</string>
+
+
 </resources>

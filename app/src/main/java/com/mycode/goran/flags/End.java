@@ -1,4 +1,4 @@
-package com.mycode.goran.alam;
+package com.mycode.goran.flags;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -75,12 +75,16 @@ public class End extends AppCompatActivity {
             double finalScore = score - subtract;
 
 
-            txtResultQuestion.setText(String.format("PASSED : %d/%d", score, totalQuestion));
+         //   txtResultQuestion.setText(String.format("PASSED : %d/%d", correctAnswer, totalQuestion));
+          //  txtResultQuestion.setText(String.format("%d/%d",SCORE,totalQuestion));
 
-            txtResultScore.setText(String.format("SCORE : %.1f (-%d)%%", finalScore,5*(playCount-1)));
+            txtResultQuestion.setText("Wrong Answers: " + SCORE + "/" + totalQuestion);
+
+          //  txtResultScore.setText(String.format("SCORE : %.1f (-%d)%%", correctAnswer,5*(playCount-1)));
 
             progressBarResult.setMax(totalQuestion);
             progressBarResult.setProgress(correctAnswer);
+
 
 
             //save score

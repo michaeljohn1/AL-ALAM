@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="أفضل نقاط مسجل"
+                android:text="Best Score Recorded"
                 android:textSize="25sp"
                 android:textStyle="bold"/>
 

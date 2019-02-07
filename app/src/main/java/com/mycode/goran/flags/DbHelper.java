@@ -1,4 +1,4 @@
-package com.mycode.goran.alam;
+package com.mycode.goran.flags;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -18,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private Context mContext = null;
 
     public DbHelper(Context context) {
-        super(context, DB_NAME, null, 1);
+        super(context, DB_NAME, null, 7);
 
         DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
         File file = new File(DB_PATH+"MyDB.db");
@@ -87,7 +87,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS Titles");
+        onCreate(db);
     }
 
 
@@ -127,13 +128,13 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c;
         int limit = 0;
-        if (mode.equals(style.MODE.سهل.toString()))
+        if (mode.equals(style.MODE.Easy.toString()))
             limit = 36;
-        else if (mode.equals(style.MODE.متوسط.toString()))
+        else if (mode.equals(style.MODE.Medium.toString()))
             limit = 56;
-        else if (mode.equals(style.MODE.صعب.toString()))
+        else if (mode.equals(style.MODE.Hard.toString()))
             limit = 112;
-        else if (mode.equals(style.MODE.أصعب.toString()))
+        else if (mode.equals(style.MODE.Hardest.toString()))
             limit = 208;
         try {
             c = db.rawQuery(String.format("SELECT * FROM Question ORDER BY Random() LIMIT %d", limit), null);

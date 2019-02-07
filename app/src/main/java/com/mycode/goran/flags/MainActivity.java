@@ -1,4 +1,4 @@
-package com.mycode.goran.alam;
+package com.mycode.goran.flags;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -9,9 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.*;
 
 import java.io.IOException;
 
@@ -24,14 +22,39 @@ public class MainActivity extends AppCompatActivity {
     Button btnPlay,btnScore;
     DbHelper db;
 
+    private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         btn = findViewById(R.id.btn_setting);
         final MediaPlayer start_tone = MediaPlayer.create(this, R.raw.right);
 
+//        MobileAds.initialize(this, getString(R.string.APP_ID));
+
+        MobileAds.initialize(this,
+                "ca-app-pub-3940256099942544~3347511713");
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+        });
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
                             case R.id.Share:
 
-                                Toast.makeText(MainActivity.this, "مشاركة التطبيق", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,R.string.Share_App, Toast.LENGTH_SHORT).show();
 
                                 Intent share = new Intent(Intent.ACTION_SEND);
                                 share.setType("text/plain");
@@ -62,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                             case R.id.MoreApps:
 
-                                Toast.makeText(MainActivity.this, "مزيد من التطبيقات", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "R.string.MoreApps", Toast.LENGTH_SHORT).show();
 
                             {
                                 Intent MoreApps = new Intent(Intent.ACTION_VIEW);
@@ -77,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                             return true;
                             case R.id.RateApp:
 
-                                Toast.makeText(MainActivity.this, "قيم التطبيق", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "R.string.RateApp", Toast.LENGTH_SHORT).show();
 
                                 Intent RateApp = new Intent(Intent.ACTION_VIEW);
                                 RateApp.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.mycode.goran.alam"));
@@ -96,13 +119,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        MobileAds.initialize(this,"ca-app-pub-2710241286669528/1584870299");
-
-        // banner add
-
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+//        MobileAds.initialize(this,getString(R.string.banner_test));
+//
+//        // banner add
+//
+//        mAdView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
         //
 
 
@@ -129,13 +152,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(progress == 0)
-                    txtMode.setText(style.MODE.سهل.toString());
+                    txtMode.setText(style.MODE.Easy.toString());
                 else if(progress == 1)
-                    txtMode.setText(style.MODE.متوسط.toString());
+                    txtMode.setText(style.MODE.Medium.toString());
                 else if(progress == 2)
-                    txtMode.setText(style.MODE.صعب.toString());
+                    txtMode.setText(style.MODE.Hard.toString());
                 else if(progress == 3)
-                    txtMode.setText(style.MODE.أصعب.toString());
+                    txtMode.setText(style.MODE.Hardest.toString());
             }
 
             @Override
@@ -173,12 +196,12 @@ public class MainActivity extends AppCompatActivity {
     private String getPlayMode() {
         if(seekBar.getProgress()==0)
 
-            return style.MODE.سهل.toString();
+            return style.MODE.Easy.toString();
         else if(seekBar.getProgress()==1)
-            return style.MODE.متوسط.toString();
+            return style.MODE.Medium.toString();
         else if(seekBar.getProgress()==2)
-            return style.MODE.صعب.toString();
+            return style.MODE.Hard.toString();
         else
-            return style.MODE.أصعب.toString();
+            return style.MODE.Hardest.toString();
     }
 }

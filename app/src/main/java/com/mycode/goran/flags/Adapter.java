@@ -1,4 +1,4 @@
-package com.mycode.goran.alam;
+package com.mycode.goran.flags;
 
 import android.content.Context;
 import android.view.LayoutInflater;

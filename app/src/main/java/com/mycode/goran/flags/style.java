@@ -1,4 +1,4 @@
-package com.mycode.goran.alam;
+package com.mycode.goran.flags;
 
 
 
@@ -9,9 +9,9 @@ public class style {
     public  static final int HARDEST_MODE_NUM = 200;
 
     public enum MODE{
-        سهل,
-        متوسط,
-        صعب,
-        أصعب
+        Easy,
+        Medium,
+        Hard,
+        Hardest,
     }
 }

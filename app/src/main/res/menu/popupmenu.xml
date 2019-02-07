@@ -3,14 +3,14 @@
 
     <item
         android:id="@+id/Share"
-        android:title="مشاركة التطبيق"/>
+        android:title="@string/Share_App"/>
 
     <item
         android:id="@+id/MoreApps"
-        android:title="مزيد من التطبيقات"/>
+        android:title="@string/MoreApps"/>
 
     <item
         android:id="@+id/RateApp"
-        android:title="قيم التطبيق"/>
+        android:title="@string/RateApp"/>
 
 </menu>

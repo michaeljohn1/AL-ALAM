@@ -1,23 +1,41 @@
-package com.mycode.goran.alam;
+package com.mycode.goran.flags;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.*;
-import com.google.android.gms.ads.*;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.google.android.gms.ads.InterstitialAd;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     final static long INTERVAL = 1000; // 1 second
     final static long TIMEOUT = 7000; // 7 sconds
     int progressValue = 0;
+    int wronganswer=0;
+//    int score=0;
+
+    private static final String KEY_SCORE = "keyScore";
+    private static final String KEY_QUESTION_COUNT = "keyQuestionCount";
+    private static final String KEY_WRONG_ANSWER_COUNT = "keywronganswercount";
+    private static final String KEY_MILLIS_LEFT = "keyMillisLeft";
+    private static final String KEY_ANSWERED = "keyAnswered";
+    private static final String KEY_QUESTION_LIST = "keyQuestionList";
+
 
     CountDownTimer mCountDown; // for progressbar
     List<Question> questionPlay = new ArrayList<>(); //total Question
@@ -29,7 +47,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     ProgressBar progressBar;
     ImageView imageView;
     Button btnA, btnB, btnC, btnD;
-     TextView txtScore,txtQuestion;
+    TextView txtScore,txtQuestion,wronganswercount;
 
     int counter = 0;
     private AdView mAdView;
@@ -40,27 +58,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);
 
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        MobileAds.initialize(this, getString(R.string.APP_ID));
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        MobileAds.initialize(this, "ca-app-pub-2710241286669528/1584870299");
-
-        // banner add
+       // MobileAds.initialize(this,getString(R.string.banner_test));
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        // banner add
+
+//        mAdView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
         //
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-2710241286669528/2553572690");
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
-
-
-
-        mInterstitialAd.setAdListener(new AdListener() {
+     mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
                 // Load the next interstitial.
@@ -77,10 +94,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         db = new DbHelper(this);
 
-         txtScore = findViewById(R.id.txtScore);
-         txtQuestion = findViewById(R.id.txtQuestion);
+        txtScore = findViewById(R.id.txtScore);
+        txtQuestion = findViewById(R.id.txtQuestion);
         progressBar = findViewById(R.id.progressBar);
+        wronganswercount = findViewById(R.id.wronganswercount);
+
+
         imageView = findViewById(R.id.question_flag);
+
         btnA = findViewById(R.id.btnAnswerA);
         btnB = findViewById(R.id.btnAnswerB);
         btnC = findViewById(R.id.btnAnswerC);
@@ -112,6 +133,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             public void onFinish() {
                 mCountDown.cancel();
                 showQuestion(++index);
+                 wronganswer++;
             }
         };
         showQuestion(index);
@@ -128,7 +150,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void showQuestion(int index) {
         if (index < totalQuestion) {
             thisQuestion++;
-              txtQuestion.setText(String.format("%d/%d",thisQuestion,totalQuestion));
+            txtQuestion.setText(String.format("%d/%d",thisQuestion,totalQuestion));
+            wronganswercount.setText("Wrong: " + wronganswer + "/" + 5);
             progressBar.setProgress(0);
             progressValue = 0;
 
@@ -162,11 +185,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 
             {
-                Toast.makeText(this, "الجواب صحيح", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
                 score++;
 
-            } else
-                Toast.makeText(this, "الجواب خطأ", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "InCorrect", Toast.LENGTH_SHORT).show();
+                wronganswer++;
+               if (wronganswer == 3) {
+
+                    Intent intent = new Intent(getApplicationContext(), End.class);
+                    startActivity(intent);
+//                    finish();
+                    Toast.makeText(this, "You have failed 5 times", Toast.LENGTH_SHORT).show();
+                }
+            }
+//////////////////////////////////////////////////////////////
             if (counter==15) {
                 if (mInterstitialAd.isLoaded()) {
 
@@ -175,26 +208,36 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
 
-              } else
-            new Handler().postDelayed(new Runnable() {
+            } else
+                new Handler().postDelayed(new Runnable() {
 
-                @Override
-                public void run() {
-                    showQuestion(++index); // If choose right , just go to next question
-                }
-            }, 3 * 1000); //your delay time
+                    @Override
+                    public void run() {
+                        showQuestion(++index); // If choose right , just go to next question
+                    }
+                }, 3 * 1000); //your delay time
 
 
             counter++;
 
-           txtScore.setText("النقاط: " + score);
-
+      //      txtScore.setText(String.format("%d",score));
+            txtScore.setText("Correct:"+score);
         }
 
     }
-
-
-    }
-
+//    public void wronganswer(){
+//        if (wronganswer==3) {
+//
+//            finish();
+//            Toast.makeText(this, "YOU HAVE FAILED 5 TIMES", Toast.LENGTH_LONG).show();
+//
+//            if (mInterstitialAd.isLoaded()) {                                                                    //ads
+//                mInterstitialAd.show();
+//            }
+//
+//        }
+//
+//    }
+}
 
 

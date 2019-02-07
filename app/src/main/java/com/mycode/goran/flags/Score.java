@@ -1,4 +1,4 @@
-package com.mycode.goran.alam;
+package com.mycode.goran.flags;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ public class Score extends AppCompatActivity {
 
      //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        MobileAds.initialize(this,"ca-app-pub-2710241286669528/1584870299");
+        MobileAds.initialize(this,getString(R.string.banner_test));
 
         // banner add
 

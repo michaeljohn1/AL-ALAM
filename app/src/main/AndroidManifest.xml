@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.mycode.goran.alam">
+          package="com.mycode.goran.flags">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
@@ -11,17 +11,19 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.mycode.goran.alam.MainActivity">
+        <activity android:name="com.mycode.goran.flags.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".GameActivity"/>
-        <activity android:name=".End" />
-        <activity android:name=".Score"/>
-
+        <activity android:name="com.mycode.goran.flags.GameActivity"/>
+        <activity android:name="com.mycode.goran.flags.End" />
+        <activity android:name="com.mycode.goran.flags.Score"/>
+        <meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="ca-app-pub-3940256099942544~3347511713"/>
     </application>
 
 </manifest>

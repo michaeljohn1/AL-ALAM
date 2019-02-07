@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "359683709185",
-    "firebase_url": "https://flag-arabic.firebaseio.com",
-    "project_id": "flag-arabic",
-    "storage_bucket": "flag-arabic.appspot.com"
+    "project_number": "786495352360",
+    "firebase_url": "https://flags-ded17.firebaseio.com",
+    "project_id": "flags-ded17",
+    "storage_bucket": "flags-ded17.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:359683709185:android:cb639d6ea419dc6f",
+        "mobilesdk_app_id": "1:786495352360:android:78c1e8499506055e",
         "android_client_info": {
-          "package_name": "com.mycode.goran.al_alam"
+          "package_name": "com.mycode.goran.flags"
         }
       },
       "oauth_client": [
         {
-          "client_id": "359683709185-s9kkam0i0u7170f1nagsbn0mll7jdrdt.apps.googleusercontent.com",
+          "client_id": "786495352360-a8sefn2u8rqhu5g8kco95tmcl43cqurl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAyQspkR2VckrCSdDnxjvnjXQXNXF9ciOQ"
+          "current_key": "AIzaSyAr_sDEW0VahFpWH6eyzKNGVF2Fy9xYSBQ"
         }
       ],
       "services": {
