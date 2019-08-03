@@ -35,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        MobileAds.initialize(this, getString(R.string.APP_ID));
 
-        MobileAds.initialize(this,
-                "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this, getString(R.string.ad_id));
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId(getString(R.string.Interstatial_test));
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         mInterstitialAd.setAdListener(new AdListener() {
@@ -118,19 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-
-//        MobileAds.initialize(this,getString(R.string.banner_test));
-//
-//        // banner add
-//
-//        mAdView = findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
-        //
-
-
-
-        seekBar = findViewById(R.id.seekBar);
+ seekBar = findViewById(R.id.seekBar);
         txtMode = findViewById(R.id.txtMode);
         btnPlay = findViewById(R.id.btnPlay);
         btnScore = findViewById(R.id.btnScore);
@@ -204,4 +191,5 @@ public class MainActivity extends AppCompatActivity {
         else
             return style.MODE.Hardest.toString();
     }
+
 }

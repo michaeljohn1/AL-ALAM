@@ -1,11 +1,11 @@
 package com.mycode.goran.flags;
 
-import android.content.Context;
-import android.database.Cursor;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import android.content.Context;
+import android.database.Cursor;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,41 +17,42 @@ public class DbHelper extends SQLiteOpenHelper {
     private SQLiteDatabase mDataBase;
     private Context mContext = null;
 
-    public DbHelper(Context context) {
-        super(context, DB_NAME, null, 7);
+    DbHelper(Context context) {
+        super(context, DB_NAME, null, 14);
 
         DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
         File file = new File(DB_PATH+"MyDB.db");
         if(file.exists())
-            openDataBase(); // Add this line to fix db.insert can't insert values
+            Open_DataBase(); // Add this line to fix db.insert can't insert values
         this.mContext = context;
     }
 
-    public void openDataBase() {
-        String myPath = DB_PATH + DB_NAME;
-        mDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
+    private void Open_DataBase() {
+        String DB_Path = DB_PATH + DB_NAME;
+        mDataBase = SQLiteDatabase.openDatabase(DB_Path, null, SQLiteDatabase.OPEN_READWRITE);
     }
 
-    public void copyDataBase() throws IOException {
+    private void copy_DataBase() throws IOException {
         try {
-            InputStream myInput = mContext.getAssets().open(DB_NAME);
+            InputStream inputStream = mContext.getAssets().open(DB_NAME);
             String outputFileName = DB_PATH + DB_NAME;
-            OutputStream myOutput = new FileOutputStream(outputFileName);
+
+            OutputStream fileOutputStream = new FileOutputStream(outputFileName);
 
             byte[] buffer = new byte[1024];
             int length;
-            while ((length = myInput.read(buffer)) > 0)
-                myOutput.write(buffer, 0, length);
+            while ((length = inputStream.read(buffer)) > 0)
+                fileOutputStream.write(buffer, 0, length);
 
-            myOutput.flush();
-            myOutput.close();
-            myInput.close();
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            inputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private boolean checkDataBase() {
+    private boolean chec_kDataBase() {
         SQLiteDatabase tempDB = null;
         try {
             String myPath = DB_PATH + DB_NAME;
@@ -65,13 +66,13 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public void createDataBase() throws IOException {
-        boolean isDBExists = checkDataBase();
+        boolean isDBExists = chec_kDataBase();
         if (isDBExists) {
 
         } else {
             this.getReadableDatabase();
             try {
-                copyDataBase();
+                copy_DataBase();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -92,38 +93,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<Question> getAllQuestion() {
-        List<Question> listQuestion = new ArrayList<>();
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor c;
-        try {
-            c = db.rawQuery("SELECT * FROM Question ORDER BY Random()", null);
-            if (c == null) return null;
-            c.moveToFirst();
-            do {
-                int Id = c.getInt(c.getColumnIndex("ID"));
-                String Image = c.getString(c.getColumnIndex("Image"));
-                String AnswerA = c.getString(c.getColumnIndex("AnswerA"));
-                String AnswerB = c.getString(c.getColumnIndex("AnswerB"));
-                String AnswerC = c.getString(c.getColumnIndex("AnswerC"));
-                String AnswerD = c.getString(c.getColumnIndex("AnswerD"));
-                String CorrectAnswer = c.getString(c.getColumnIndex("CorrectAnswer"));
-
-                Question question = new Question(Id, Image, AnswerA, AnswerB, AnswerC, AnswerD, CorrectAnswer);
-                listQuestion.add(question);
-            }
-            while (c.moveToNext());
-            c.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        db.close();
-        return listQuestion;
-    }
-
-
-    public List<Question> getQuestionMode(String mode) {
+    List<Question> Question_Mode(String mode) {
         List<Question> listQuestion = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c;
@@ -146,10 +116,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 String AnswerA = c.getString(c.getColumnIndex("AnswerA"));
                 String AnswerB = c.getString(c.getColumnIndex("AnswerB"));
                 String AnswerC = c.getString(c.getColumnIndex("AnswerC"));
-                String AnswerD = c.getString(c.getColumnIndex("AnswerD"));
+//                String AnswerD = c.getString(c.getColumnIndex("AnswerD"));
                 String CorrectAnswer = c.getString(c.getColumnIndex("CorrectAnswer"));
 
-                Question question = new Question(Id, Image, AnswerA, AnswerB, AnswerC, AnswerD, CorrectAnswer);
+                Question question = new Question(Id, Image, AnswerA, AnswerB, AnswerC, CorrectAnswer);
                 listQuestion.add(question);
             }
             while (c.moveToNext());
@@ -162,14 +132,14 @@ public class DbHelper extends SQLiteOpenHelper {
         return listQuestion;
     }
 
-    //Insert Score to Ranking table
-    public void insertScore(double score) {
+
+    void insert_Score(double score) {
         String query = "INSERT INTO Ranking(Score) VALUES("+score+")";
         mDataBase.execSQL(query);
     }
 
-    //Get Score and sort ranking
-    public List<Ranking> getRanking() {
+
+    List<Ranking> Ranking() {
         List<Ranking> listRanking = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c;
@@ -195,7 +165,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     //Update version 2.0
-    public int getPlayCount(int level)
+    int Receive_PlayCount(int level)
     {
         int result = 0;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -215,7 +185,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public void updatePlayCount(int level,int playCount)
+    void Update_PlayCount(int level, int playCount)
     {
         String query = String.format("UPDATE UserPlayCount Set PlayCount = %d WHERE Level = %d",playCount,level);
         mDataBase.execSQL(query);

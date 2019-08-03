@@ -8,16 +8,16 @@ public class Question {
     private String AnswerA;
     private String AnswerB;
     private String AnswerC;
-    private String AnswerD;
+//    private String AnswerD;
     private String CorrectAnswer;
 
-    public Question(int ID, String image, String answerA, String answerB, String answerC, String answerD, String correctAnswer) {
+    public Question(int ID, String image, String answerA, String answerB, String answerC,  String correctAnswer) {
         this.ID = ID;
         Image = image;
         AnswerA = answerA;
         AnswerB = answerB;
         AnswerC = answerC;
-        AnswerD = answerD;
+//        AnswerD = answerD;
         CorrectAnswer = correctAnswer;
     }
 
@@ -61,13 +61,13 @@ public class Question {
         AnswerC = answerC;
     }
 
-    public String getAnswerD() {
-        return AnswerD;
-    }
-
-    public void setAnswerD(String answerD) {
-        AnswerD = answerD;
-    }
+//    public String getAnswerD() {
+//        return AnswerD;
+//    }
+//
+//    public void setAnswerD(String answerD) {
+//        AnswerD = answerD;
+//    }
 
     public String getCorrectAnswer() {
         return CorrectAnswer;

@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Flags Quiz</string>
-    <string name="banner_test">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="Interstatial_test">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="app_name">Flags Test</string>
+    <!--<string name="ad_id">ca-app-pub-3940256099942544~3347511713</string>-->
+    <!--<string name="banner_test">ca-app-pub-3940256099942544/6300978111</string>-->
+    <!--<string name="Interstatial_test">ca-app-pub-3940256099942544/1033173712</string>-->
+
+    <string name="ad_id">ca-app-pub-2710241286669528~8196001367</string>
+    <string name="banner_test">ca-app-pub-2710241286669528/1584870299</string>
+    <string name="Interstatial_test">ca-app-pub-2710241286669528/2553572690</string>
+
+
+
+
     <string name="best_score_recorded">BEST SCORE RECORDED</string>
     <string name="answer_a">Answer A</string>
     <string name="answer_b">Answer B</string>
@@ -12,8 +21,8 @@
     <string name="play">PLAY</string>
     <string name="score">SCORE</string>
     <string name="select_mode">Select Mode</string>
-    <string name="score_0">Score : 0</string>
-    <string name="passed_0_30">Passed : 0/30</string>
+    <string name="score_0">Try another level</string>
+    <string name="passed_0_30">Game is Over</string>
     <string name="try_again">TRY AGAIN</string>
 
     <string name="Share">Share The App</string>
@@ -33,7 +42,9 @@
     <string name="PASSED">PASSED : %d/%d</string>
     <string name="Wrong">Wrong</string>
     <string name="correct">Correct :</string>
-    <string name="APP_ID">ca-app-pub-3940256099942544~3347511713</string>
+
+    <string name="Score_result">Wrong Answers:</string>
+    <string name="exit">Are you sure you want to exit ?</string>
 
 
 </resources>

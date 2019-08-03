@@ -5,18 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundPage"
-    tools:context=".End">
-
-
-
+    tools:context=".End_Activity">
 
     <RelativeLayout
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
-        android:padding="20dp"
+        android:padding="10dp"
         android:elevation="4dp"
         android:background="@drawable/round_corner"
         android:layout_width="fill_parent"
@@ -34,17 +29,18 @@
                     android:layout_gravity="center"
                     android:text="@string/passed_0_30"
                     android:textSize="30sp"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
            <TextView
                android:id="@+id/txtTotalScore"
                android:layout_gravity="center"
-               android:text="score_0"
-               android:textSize="30sp"
+               android:text="@string/score_0"
+               android:textColor="@color/colorPrimaryDark"
+               android:textSize="26sp"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content" />
-
 
             <ProgressBar
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
@@ -59,10 +55,10 @@
                 android:id="@+id/btnTryAgain"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_margin="8dp"
-                android:background="#FF8A80"
+                android:background="@color/colorAccent"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:text="@string/try_again"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:theme="@style/MyButton"
                 android:layout_width="match_parent"
@@ -70,10 +66,14 @@
 
         </LinearLayout>
 
-
-
-
+        <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                                           android:id="@+id/adView"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_alignParentBottom="true"
+                                           android:layout_centerHorizontal="true"
+                                           ads:adSize="BANNER"
+                                           ads:adUnitId="@string/banner_test" />
     </RelativeLayout>
-
-
 </RelativeLayout>

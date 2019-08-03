@@ -9,58 +9,68 @@
 
 
     <ImageView
-        android:id="@+id/flags"
-        android:layout_width="277dp"
-        android:layout_height="163dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/united_kingdom"
-        android:freezesText="true"
-        android:gravity="center" />
+            android:id="@+id/flags"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/united_kingdom"
+            android:freezesText="true"
+            android:gravity="center"/>
 
-    <TextView
-        android:id="@+id/textmode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/flags"
-        android:layout_marginTop="15dp"
-        android:text="@string/select_mode"
-        android:textSize="25dp"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark" />
+
 
     <LinearLayout
-        android:layout_width="489dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/flags"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
-        android:background="#ffffff"
-        android:orientation="vertical">
+            android:id="@+id/selectMode"
+            android:layout_width="489dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/flags"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20sp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:layout_marginRight="20sp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp">
+
+        <TextView
+                android:id="@+id/textmode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/select_mode"
+                android:textSize="24sp"
+              android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+          />
+
 
         <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/greengreen"
-            android:max="3"
-            android:thumb="@drawable/touch" />
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@color/colorAccent"
+
+                android:max="3"
+                android:thumb="@drawable/touch"
+
+             />
 
         <TextView
                 android:id="@+id/txtMode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_gravity="center"
                 android:text="Easy"
-                android:textColor="@color/colorPrimaryDark" android:textSize="20sp"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"/>
 
 
     </LinearLayout>
@@ -68,8 +78,8 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="204dp"
-            android:layout_below="@+id/flags"
-            android:layout_marginTop="71dp"
+            android:layout_below="@+id/selectMode"
+            android:layout_marginTop="5dp"
             android:gravity="center"
             android:padding="20dp">
         <Button
@@ -80,49 +90,52 @@
                 android:background="#3fad14"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:text="@string/play"
-                android:textColor="@color/white1"
-                android:layout_margin="3dp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:theme="@style/MyButton"/>
+                android:theme="@style/MyButton" android:layout_marginLeft="3dp" android:layout_marginTop="3dp"
+                android:layout_marginStart="3dp" android:layout_marginRight="3dp" android:layout_marginEnd="3dp"
+                android:layout_marginBottom="10dp" android:textSize="12sp"/>
 
         <Button
                 android:id="@+id/btnScore"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp"
                 android:background="#df11ce"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:text="@string/score"
-                android:textColor="@color/white1"
+                android:textColor="@color/white"
                 android:layout_below="@id/btnPlay"
                 android:textStyle="bold"
-                android:theme="@style/MyButton"/>
+                android:theme="@style/MyButton" android:layout_marginLeft="3dp" android:layout_marginTop="3dp"
+                android:layout_marginStart="3dp" android:layout_marginRight="3dp" android:layout_marginEnd="3dp"
+                android:layout_marginBottom="10dp" android:textSize="12sp"/>
 
         <Button
                 android:id="@+id/btn_setting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="3dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="3dp"
                 android:background="@color/colorAccent"
                 android:text="@string/settings"
 
                 android:layout_below="@id/btnScore"
-                android:textColor="@color/white1"/>
+                android:textColor="@color/white" android:layout_marginLeft="3dp" android:layout_marginStart="3dp"
+                android:layout_marginRight="3dp" android:layout_marginEnd="3dp" android:layout_marginBottom="3dp"
+                android:textSize="12sp"/>
 
 
     </RelativeLayout>
 
-
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_test" />
+                                       android:id="@+id/adView"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:layout_alignParentBottom="true"
+                                       android:layout_centerHorizontal="true"
+                                       android:layout_marginBottom="11dp"
+                                       ads:adSize="BANNER"
+                                       ads:adUnitId="@string/banner_test" />
+
 </RelativeLayout>

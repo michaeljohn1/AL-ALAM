@@ -30,11 +30,11 @@ public class Score extends AppCompatActivity {
 
         lstView = findViewById(R.id.lstRanking);
         DbHelper db = new DbHelper(this);
-        List<Ranking> lstRanking = db.getRanking();
+        List<Ranking> lstRanking = db.Ranking();
         if(lstRanking.size() > 0)
         {
-            Adapter adapter = new Adapter(this,lstRanking);
-            lstView.setAdapter(adapter);
+            CustomAdapter customAdapter = new CustomAdapter(this,lstRanking);
+            lstView.setAdapter(customAdapter);
         }
     }
     @Override
