@@ -7,16 +7,21 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
@@ -25,6 +30,9 @@ import com.google.android.gms.ads.MobileAds;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     final static long INTERVAL = 1000; // 1 second
@@ -41,7 +49,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     DbHelper db;
     int index = 0, score = 0, thisQuestion = 0, totalQuestion, correctAnswer;
     String mode = "";
-
+    private FrameLayout adContainerView;
 
     ProgressBar progressBar;
     ImageView imageView;
@@ -49,7 +57,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     TextView txtScore, txtQuestion, wronganswercount;
 
     int counter = 0;
-    private AdView mAdView;
+    private AdView adView;
     private InterstitialAd mInterstitialAd;
 
     @Override
@@ -59,13 +67,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        MobileAds.initialize(this, getString(R.string.ad_id));
-
-        // MobileAds.initialize(this,getString(R.string.banner_test));
-
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) { }
+        });
+        adContainerView = findViewById(R.id.ad_view_container);
+        // Step 1 - Create an AdView and set the ad unit ID on it.
+        adView = new AdView(this);
+        adView.setAdUnitId(getString(R.string.banner_test));
+        adContainerView.addView(adView);
+        loadBanner();
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         mInterstitialAd = new InterstitialAd(this);
@@ -137,7 +150,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
                 mCountDown.cancel();
                 showQuestion(++index);
-//                timeover.start();
                 wronganswer++;
             }
         };
@@ -149,6 +161,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void askToClose() {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
         builder.setMessage(R.string.exit);
         builder.setCancelable(true);
@@ -231,7 +244,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
 //////////////////////////////////////////////////////////////
-            if (counter==10) {              //ish nkt
+            if (counter==20) {              //ish nkt
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                     counter=0;
@@ -260,7 +273,37 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+    private void loadBanner() {
+        // Create an ad request. Check your logcat output for the hashed device ID
+        // to get test ads on a physical device, e.g.,
+        // "Use AdRequest.Builder.addTestDevice("ABCDE0123") to get test ads on this
+        // device."
+        AdRequest adRequest =
+                new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                        .build();
 
+        AdSize adSize = getAdSize();
+        // Step 4 - Set the adaptive ad size on the ad view.
+        adView.setAdSize(adSize);
+
+        // Step 5 - Start loading the ad in the background.
+        adView.loadAd(adRequest);
+    }
+
+    private AdSize getAdSize() {
+        // Step 2 - Determine the screen width (less decorations) to use for the ad width.
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+
+        int adWidth = (int) (widthPixels / density);
+
+        // Step 3 - Get adaptive ad size and return for setting on the ad view.
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
+    }
 }
 
 

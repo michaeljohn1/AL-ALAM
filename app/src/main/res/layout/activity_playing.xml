@@ -10,7 +10,7 @@
     <ImageView
             android:id="@+id/question_flag"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="150dp"
             android:layout_alignParentTop="true"
 
             android:layout_centerHorizontal="true"
@@ -28,7 +28,7 @@
         android:background="@drawable/round_corner"
         android:paddingTop="10dp">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,17 +154,14 @@
                         android:theme="@style/MyButton" android:textSize="18sp"/>
 
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 
-    <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
+    <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="1dp"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_test"/>
+            android:layout_centerHorizontal="true" />
 </RelativeLayout>

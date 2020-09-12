@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Flags Test</string>
-    <!--<string name="ad_id">ca-app-pub-3940256099942544~3347511713</string>-->
-    <!--<string name="banner_test">ca-app-pub-3940256099942544/6300978111</string>-->
-    <!--<string name="Interstatial_test">ca-app-pub-3940256099942544/1033173712</string>-->
+    <string name="app_name">Flags Quiz</string>
+<!--    <string name="ad_id">ca-app-pub-3940256099942544~3347511713</string>-->
+<!--    <string name="banner_test">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="Interstatial_test">ca-app-pub-3940256099942544/1033173712</string>-->
 
     <string name="ad_id">ca-app-pub-2710241286669528~8196001367</string>
     <string name="banner_test">ca-app-pub-2710241286669528/1584870299</string>
@@ -27,7 +27,7 @@
 
     <string name="Share">Share The App</string>
     <string name="RateApp">Rate The App</string>
-    <string name="MoreApps">More The Apps</string>
+    <string name="MoreApps">More Apps</string>
 
     <string name="SCORE">SCORE</string>
     <string name="TOTAL">TOTAL</string>
@@ -45,6 +45,7 @@
 
     <string name="Score_result">Wrong Answers:</string>
     <string name="exit">Are you sure you want to exit ?</string>
+    <string name="open_google_play">open google play?</string>
 
 
 </resources>
